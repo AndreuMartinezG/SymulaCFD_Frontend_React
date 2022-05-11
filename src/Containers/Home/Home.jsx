@@ -21,7 +21,7 @@ const Home = (props) => {
  
  
     return (
-        <div className='designHome'></div>
+        <div className='designHome'>SOY HOME</div>
     )
 }
 export default connect((state) => ({ 
