@@ -3,9 +3,9 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
 import {connect} from 'react-redux'
  
-import './Footer.css'
+import './Home.css'
  
-const Footer = (props) => {
+const Home = (props) => {
  
     let navigate = useNavigate();
  
@@ -21,9 +21,9 @@ const Footer = (props) => {
  
  
     return (
-        <div className='designFooter'></div>
+        <div className='designHome'></div>
     )
 }
 export default connect((state) => ({ 
     //variables de rdx a crear
-}))(Footer);
+}))(Home);
