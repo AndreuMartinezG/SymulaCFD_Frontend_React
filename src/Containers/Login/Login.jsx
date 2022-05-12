@@ -63,9 +63,9 @@ const Login = (props) => {
 
             console.log(body)
 
-            // let resultado = await axios.post("https://movie-db-geekshubs.herokuapp.com/usuarios/login", body);
+            let resultado = await axios.post("http://127.0.0.1:8000/api/login", body);
 
-
+            console.log(resultado)
             //Cambiamos el valor del hook credenciales, por lo tanto se recargará el componente
             // if (resultado.data === "Usuario o contraseña inválido") {
             //     alert("Usuario o contraseña inválido")
