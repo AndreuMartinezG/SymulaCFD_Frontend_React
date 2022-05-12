@@ -34,7 +34,9 @@
     justify-content: center;
     align-items: center;
     height: 85.2vh;
-    background-color: rgb(241, 241, 241);
+    background-image: url('../../img/Portada_Tunel_Viento.jpg');
+    background-position: 50% 180%;
+    background-repeat: no-repeat;
 }
 
 input.error {
