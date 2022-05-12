@@ -29,7 +29,7 @@ const Home = (props) => {
                         <h5 className="card-title">User access</h5>
                         <p className="card-text">Identify yourself on the platform to continue : </p>
                         <div className="optionHome">
-                            <a href="#" className="btn btn-primary">Sign up</a>
+                            <a href="/register" className="btn btn-primary">Sign up</a>
                             <div className="spaceHomeAcces">or</div>
                             <a href="#" className="btn btn-primary">Log in</a>
                         </div>
