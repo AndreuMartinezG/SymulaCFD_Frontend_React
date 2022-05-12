@@ -67,27 +67,27 @@ const Login = (props) => {
 
             console.log(resultado)
             //Cambiamos el valor del hook credenciales, por lo tanto se recargará el componente
-            // if (resultado.data === "Usuario o contraseña inválido") {
-            //     alert("Usuario o contraseña inválido")
-            //     setTimeout(() => {
-            //         window.location.reload()
-            //     },1000)
-            //     navigate("/login")
-            // } else {
-
-            //     //Guardaríamos los datos en redux...
-
-            //     props.dispatch({ type: LOGIN, payload: resultado.data });
 
 
-            //     setTimeout(() => {
-            //         navigate("/");
-            //     }, 1500);
-            // }
+            //Guardaríamos los datos en redux...
+
+            props.dispatch({ type: LOGIN, payload: resultado.data });
+
+
+            setTimeout(() => {
+                navigate("/");
+            }, 1500);
+
 
 
         } catch (error) {
-
+            if (error.response.data.message === 'Invalid Email or Password') {
+                alert('Invalid Email or Password')
+                setTimeout(() => {
+                    window.location.reload()
+                },1000)
+                navigate("/login")
+            }
             console.log(error)
 
         }
@@ -136,7 +136,7 @@ const Login = (props) => {
                 } = props;
                 return (
                     <div className="app bg-color">
-                        
+
                         <Title level={1}>Log In</Title>
                         <hr />
                         <div className="loginForm">
