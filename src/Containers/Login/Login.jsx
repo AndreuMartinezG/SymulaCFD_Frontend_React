@@ -9,7 +9,7 @@ import {LockOutlined, UserOutlined} from '@ant-design/icons'
 //REDUX
 
 import { connect } from 'react-redux'
-import { LOGIN } from '../../redux/types'
+import { LOGIN } from '../../Redux/types'
 
 import './Login.css'
 
