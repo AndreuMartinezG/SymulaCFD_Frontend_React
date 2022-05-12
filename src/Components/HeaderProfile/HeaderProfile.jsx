@@ -1,6 +1,8 @@
 import React from 'react';
 import './HeaderProfile.css'
 import { connect } from 'react-redux';
+import FaviconSymula from '../../img/FaviconSymula.png';
+import CocheMVP from '../../img/CocheMVP.jpg';
 
 const HeaderProfile = (props) => {
 
@@ -8,13 +10,13 @@ const HeaderProfile = (props) => {
 
         <div className="headerProfile">
             <img
-                src="https://picsum.photos/id/1018/3000"
+                src={CocheMVP}
                 className="headerProfileMainImg"
                 alt="cover"
             />
             <div className="headerProfileImg">
                 <img
-                    src="https://drive.google.com/file/d/1JvHQEXTd2sKw8EmOW7J2nZ51OlEOA64O/view?usp=sharing"
+                    src={FaviconSymula}
                     className="headerProfileBodyImg"
                     alt="cover"
                 />
@@ -26,5 +28,5 @@ const HeaderProfile = (props) => {
 }
 
 export default connect((state) => ({
-    userData: state.credentials.user
+    // userData: state.credentials.user
 }))(HeaderProfile);

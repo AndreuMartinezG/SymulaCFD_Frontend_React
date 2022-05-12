@@ -15,9 +15,9 @@ const Home = (props) => {
 
     useEffect(() => {
         //UseEffect equivalente a componentDidUpdate (actualizado)
-        if (props.credentials?.token) {
-            navigate("/deskboard");
-        }
+        // if (props.credentials?.token) {
+        //     navigate("/deskboard");
+        // }
     })
 
 

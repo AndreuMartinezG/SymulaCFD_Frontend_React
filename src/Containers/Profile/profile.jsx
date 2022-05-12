@@ -9,11 +9,13 @@ import HeaderProfile from '../../Components/HeaderProfile/HeaderProfile';
 
 const Profile = (props) => {
  
+    
     let navigate = useNavigate();
+    let userName = props.credentials.user;
  
     useEffect(()=>{
     //UseEffect equivalente a componentDidMount (montado)
- 
+    console.log(props.credentials.user)
     },[])
  
     useEffect(()=>{
@@ -25,10 +27,10 @@ const Profile = (props) => {
     return (
         <div className='designProfile'>
             <HeaderProfile/>
-            <h2>{props.userData.user.firstName} {props.userData.user.lastName}</h2>
+            <h2>{userName.name} {userName.lastname}</h2>
         </div>
     )
 }
 export default connect((state) => ({ 
-    //variables de rdx a crear
+    credentials: state.credentials
 }))(Profile);
