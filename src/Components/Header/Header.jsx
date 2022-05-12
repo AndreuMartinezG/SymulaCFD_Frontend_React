@@ -55,24 +55,24 @@ const Header = (props) => {
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{name}</a>
                         <ul className="dropdown-menu">
                             <li><a className="dropdown-item" href="#">Profile</a></li>
-                            <li><a className="dropdown-item" href="#">Contact</a></li>
+                            <li><a className="dropdown-item" href="https://symulacfd.com/contacto/" target="blank">Contact</a></li>
                             <li><a className="dropdown-item" onClick={() => logOut()}>Log Out</a></li>
                         </ul>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Link</a>
+                        <a className="nav-link" href="https://symulacfd.com/" target="blank">About Us</a>
                     </li>
                 </ul>
             }
             {/* EL USUARIO NO ESTA LOGUEADO */}
-            
+
             {!isLogged &&
                 <ul className="nav justify-content-end">
                     <li className="nav-item">
                         <a className="nav-link" href="/">Home</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="https://symulacfd.com/">About Us</a>
+                        <a className="nav-link" href="https://symulacfd.com/" target="blank">About Us</a>
                     </li>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Acces</a>
