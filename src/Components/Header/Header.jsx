@@ -11,7 +11,7 @@ const Header = (props) => {
     let navigate = useNavigate();
 
     useEffect(() => {
-        //UseEffect equivalente a componentDidMount (montado)
+        console.log(props.credentials.token, "token")
 
     }, [])
 
@@ -49,5 +49,5 @@ const Header = (props) => {
     )
 }
 export default connect((state) => ({
-    //variables de rdx a crear
+    credentials: state.credentials,
 }))(Header);
