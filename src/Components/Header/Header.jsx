@@ -9,9 +9,11 @@ import './Header.css'
 const Header = (props) => {
 
     let navigate = useNavigate();
+    
+    let name = props.credentials?.user.name;
 
     useEffect(() => {
-        console.log(props.credentials.token, "token")
+        console.log(props.credentials.user)
 
     }, [])
 
@@ -33,7 +35,7 @@ const Header = (props) => {
                     <a className="nav-link active" aria-current="page" href="#">Projects</a>
                 </li>
                 <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">"NAME"</a>
+                    <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{name}</a>
                     <ul className="dropdown-menu">
                         <li><a className="dropdown-item" href="#">Profile</a></li>
                         <li><a className="dropdown-item" href="#">Contact</a></li>
