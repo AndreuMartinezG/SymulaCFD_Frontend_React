@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, {useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -16,8 +15,12 @@ const Home = (props) => {
 
     useEffect(() => {
         //UseEffect equivalente a componentDidUpdate (actualizado)
-
+        if (props.credentials?.token) {
+            navigate("/deskboard");
+        }
     })
+
+
 
 
     return (
@@ -40,5 +43,5 @@ const Home = (props) => {
     )
 }
 export default connect((state) => ({
-    //variables de rdx a crear
+    credentials: state.credentials
 }))(Home);

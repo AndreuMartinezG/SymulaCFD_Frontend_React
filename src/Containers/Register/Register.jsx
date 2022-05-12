@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import './Register.css';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -50,7 +50,7 @@ const Register = (props) => {
 
         try {
 
-            let resultado = await axios.post("http://127.0.0.1:8000/api/register", body);
+            await axios.post("http://127.0.0.1:8000/api/register", body);
 
             alert("Usuario registrado con Exito")
             setTimeout(() => {
