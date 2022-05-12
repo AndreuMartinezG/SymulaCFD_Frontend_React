@@ -128,6 +128,7 @@ const Register = (props) => {
                 return (
 
                     <div className="designRegister">
+                        <hr />
                         <h1 className='h1Registro'>Register</h1>
                         <div className="formRegister">
                             <Form style={{ minWidth: '25em' }} {...formItemLayout} onSubmit={handleSubmit} >

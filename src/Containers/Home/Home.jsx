@@ -31,7 +31,7 @@ const Home = (props) => {
                         <div className="optionHome">
                             <a href="/register" className="btn btn-primary">Sign up</a>
                             <div className="spaceHomeAcces">or</div>
-                            <a href="#" className="btn btn-primary">Log in</a>
+                            <a href="/login" className="btn btn-primary">Log in</a>
                         </div>
                     </div>
                 </div>
