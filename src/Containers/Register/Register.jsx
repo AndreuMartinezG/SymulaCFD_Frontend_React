@@ -47,21 +47,23 @@ const Register = (props) => {
     const registrame = async (dataToSubmit) => {
 
         let body = dataToSubmit
-        
+
+        console.log(body)
+
         try {
 
-            let resultado = await axios.post("https://movie-db-geekshubs.herokuapp.com/usuarios", body);
+            // let resultado = await axios.post("https://movie-db-geekshubs.herokuapp.com/usuarios", body);
 
 
-            if (resultado.data === "El usuario con ese e-mail ya existe en nuestra base de datos") {
-                alert(resultado.data)
+            // if (resultado.data === "El usuario con ese e-mail ya existe en nuestra base de datos") {
+            //     alert(resultado.data)
 
-            } else {
-                alert("Usuario registrado con Exito")
-                setTimeout(() => {
-                    navigate("/login");
-                }, 500);
-            }
+            // } else {
+            //     alert("Usuario registrado con Exito")
+            //     setTimeout(() => {
+            //         navigate("/login");
+            //     }, 500);
+            // }
 
         } catch (error) {
             console.log(error);
@@ -140,9 +142,9 @@ const Register = (props) => {
 
                 return (
 
-                    <div className="app">
+                    <div className="designRegister">
                         <h1 className='h1Registro'>Registro</h1>
-                        
+
                         <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
 
                             <Form.Item required label="Nombre" hasFeedback validateStatus={errors.nombre && touched.nombre ? "error" : 'success'}>
