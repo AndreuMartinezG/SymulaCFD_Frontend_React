@@ -1,0 +1,52 @@
+.designLogin {
+
+    background-color: beige;
+    
+    height: 26.1em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginButton {
+    width: 9em;
+    height: 3em;
+
+    color: white;
+
+    transition: 0.3s;
+    background-color: green;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 2em;
+
+    cursor: pointer;
+}
+
+.app {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85.2vh;
+    background-color: rgb(241, 241, 241);
+}
+
+input.error {
+    border-color: red;
+}
+  
+  
+.input-feedback {
+    color: red;
+    height: 5px;
+}
+
+.checkIzq {
+    float: left;
+}

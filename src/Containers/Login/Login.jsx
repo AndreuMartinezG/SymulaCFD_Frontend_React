@@ -134,9 +134,9 @@ const Login = (props) => {
                 } = props;
                 return (
                     <div className="app bg-color">
-
-                        <Title level={1}>Log In</Title>
                         <hr />
+                        <Title level={1}>Log In</Title>
+                        
                         <form onSubmit={handleSubmit} style={{ width: '350px' }}>
 
                             <Form.Item required>
