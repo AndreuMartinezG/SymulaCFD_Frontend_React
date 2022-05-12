@@ -39,7 +39,7 @@ const Register = (props) => {
 
     useEffect(() => {
         if (props.credentials?.token) {
-            navigate("/");
+            navigate("/deskboard");
         }
     })
 

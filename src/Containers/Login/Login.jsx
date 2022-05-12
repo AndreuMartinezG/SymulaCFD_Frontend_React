@@ -49,7 +49,7 @@ const Login = (props) => {
 
     useEffect(() => {
         if (props.credentials?.token) {
-            navigate("/");
+            navigate("/deskboard");
         }
     })
 
@@ -75,7 +75,7 @@ const Login = (props) => {
 
 
             setTimeout(() => {
-                navigate("/");
+                navigate("/deskboard");
             }, 1500);
 
 
