@@ -78,48 +78,36 @@ const Register = (props) => {
 
         <Formik
             initialValues={{
-                nombre: '',
-                apellido: '',
+                name: '',
+                lastname: '',
                 email: '',
-                edad: '',
-                telefono: '',
                 password: '',
                 confirmPassword: ''
             }}
 
             validationSchema={Yup.object().shape({
-                nombre: Yup.string()
-                    .required('Se requiere Nombre'),
-                apellido: Yup.string()
-                    .required('Se requiere Apellido'),
+                name: Yup.string()
+                    .required('Name is required'),
+                lastname: Yup.string()
+                    .required('Last name is required'),
                 email: Yup.string()
-                    .email('Email invalido')
-                    .required('Se requiere Email'),
-                edad: Yup.number()
-                    .typeError('Debes especificar un numero')
-                    .min(18, 'Edad minima 18')
-                    .max(99, 'Edad maxima 99')
-                    .required('Se requiere Edad'),
-                telefono: Yup.string()
-                    .matches(phoneRegExp, 'Telefono no valido')
-                    .required('Se requiere tu Telefono'),
+                    .email('Email is invalid')
+                    .required('Email is required'),
                 password: Yup.string()
-                    .min(4, 'La contraseña requiere 4 caracteres')
-                    .required('Se requiere Contraseña'),
+                    .min(4, 'Password must be at least 4 characters')
+                    .required('Password is required'),
                 confirmPassword: Yup.string()
-                    .oneOf([Yup.ref('password'), null], 'Las Contraseñas deben coincidir')
-                    .required('Se requiere validacion de Contraseña')
+                    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+                    .required('Confirm Password is required'),
             })}
             onSubmit={(values, { setSubmitting }) => {
                 setTimeout(() => {
 
                     let dataToSubmit = {
 
-                        nombre: values.nombre,
-                        apellido: values.apellido,
+                        name: values.name,
+                        lastname: values.lastname,
                         email: values.email,
-                        edad: values.edad,
-                        telefono: values.telefono,
                         password: values.password,
                     };
 
@@ -143,48 +131,48 @@ const Register = (props) => {
                 return (
 
                     <div className="designRegister">
-                        <h1 className='h1Registro'>Registro</h1>
+                        <h1 className='h1Registro'>Register</h1>
                         <div className="formRegister">
                             <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
 
-                                <Form.Item required label="Nombre" hasFeedback validateStatus={errors.nombre && touched.nombre ? "error" : 'success'}>
+                                <Form.Item required label="Name" hasFeedback validateStatus={errors.name && touched.name ? "error" : 'success'}>
                                     <Input
-                                        id="nombre"
-                                        placeholder="Introduce tu nombre"
+                                        id="name"
+                                        placeholder="Name"
                                         type="text"
-                                        value={values.nombre}
+                                        value={values.name}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         className={
-                                            errors.nombre && touched.nombre ? 'text-input error' : 'text-input'
+                                            errors.name && touched.name ? 'text-input error' : 'text-input'
                                         }
                                     />
-                                    {errors.nombre && touched.nombre && (
-                                        <div className="input-feedback">{errors.nombre}</div>
+                                    {errors.name && touched.name && (
+                                        <div className="input-feedback">{errors.name}</div>
                                     )}
                                 </Form.Item>
 
-                                <Form.Item required label="Apellido" hasFeedback validateStatus={errors.apellido && touched.apellido ? "error" : 'success'}>
+                                <Form.Item required label="lastname" hasFeedback validateStatus={errors.lastname && touched.lastname ? "error" : 'success'}>
                                     <Input
-                                        id="apellido"
-                                        placeholder="Introduce tu Apellido"
+                                        id="lastname"
+                                        placeholder="lastname"
                                         type="text"
-                                        value={values.apellido}
+                                        value={values.lastname}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         className={
-                                            errors.apellido && touched.apellido ? 'text-input error' : 'text-input'
+                                            errors.lastname && touched.lastname ? 'text-input error' : 'text-input'
                                         }
                                     />
-                                    {errors.apellido && touched.apellido && (
-                                        <div className="input-feedback">{errors.apellido}</div>
+                                    {errors.lastname && touched.lastname && (
+                                        <div className="input-feedback">{errors.lastname}</div>
                                     )}
                                 </Form.Item>
 
                                 <Form.Item required label="Email" hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
                                     <Input
                                         id="email"
-                                        placeholder="Introduce tu Email"
+                                        placeholder="Email"
                                         type="email"
                                         value={values.email}
                                         onChange={handleChange}
@@ -198,47 +186,11 @@ const Register = (props) => {
                                     )}
                                 </Form.Item>
 
-                                <Form.Item required label="Edad" hasFeedback validateStatus={errors.edad && touched.edad ? "error" : 'success'}>
-                                    <Input
-                                        id="edad"
-                                        placeholder="Introduce tu Edad"
-                                        type="text"
-                                        value={values.edad}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        className={
-                                            errors.edad && touched.edad ? 'text-input error' : 'text-input'
-                                        }
-                                    />
-                                    {errors.edad && touched.edad && (
-                                        <div className="input-feedback">{errors.edad}</div>
-                                    )}
-
-                                </Form.Item>
-
-                                <Form.Item required label="Telefono" hasFeedback validateStatus={errors.telefono && touched.telefono ? "error" : 'success'}>
-                                    <Input
-                                        id="telefono"
-                                        placeholder="Introduce tu Telefono"
-                                        type="text"
-                                        value={values.telefono}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        className={
-                                            errors.telefono && touched.telefono ? 'text-input error' : 'text-input'
-                                        }
-                                    />
-                                    {errors.telefono && touched.telefono && (
-                                        <div className="input-feedback">{errors.telefono}</div>
-                                    )}
-
-                                </Form.Item>
-
                                 <Form.Item required label="Password" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
 
                                     <Input
                                         id="password"
-                                        placeholder="Introduce tu Contraseña"
+                                        placeholder="Password"
                                         type="password"
                                         value={values.password}
                                         onChange={handleChange}
@@ -255,7 +207,7 @@ const Register = (props) => {
                                 <Form.Item required label="Confirm" hasFeedback validateStatus={errors.confirmPassword && touched.confirmPassword ? "error" : 'success'}>
                                     <Input
                                         id="confirmPassword"
-                                        placeholder="Introduce confirmacion de Contraseña"
+                                        placeholder="Confirm Password"
                                         type="password"
                                         value={values.confirmPassword}
                                         onChange={handleChange}
@@ -271,7 +223,7 @@ const Register = (props) => {
 
                                 <Form.Item className='floatLeft'{...tailFormItemLayout}>
                                     <Button onClick={handleSubmit} type="primary" disabled={isSubmitting}>
-                                        Enviar
+                                        Submit
                                     </Button>
                                 </Form.Item>
                             </Form>
