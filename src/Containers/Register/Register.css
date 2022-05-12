@@ -17,9 +17,23 @@
 }
 
 .h1Registro {
-    margin-left: 4em;
+    margin-left: 3.5em;
 }
 
 .formRegister {
-    margin-left: 2em;
+    padding-right: 2em;
+    padding-top: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: content-box;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    margin-left: 10em;
+}
+
+@media screen and (max-width: 768px) {
+    .formRegister {
+        margin-left: 2em;
+    }
 }

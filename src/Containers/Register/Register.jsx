@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import './Register.css';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -48,25 +48,23 @@ const Register = (props) => {
 
         let body = dataToSubmit
 
-        console.log(body)
-
         try {
 
-            // let resultado = await axios.post("https://movie-db-geekshubs.herokuapp.com/usuarios", body);
+            let resultado = await axios.post("http://127.0.0.1:8000/api/register", body);
 
+            alert("Usuario registrado con Exito")
+            setTimeout(() => {
+                navigate("/login");
+            }, 10);
 
-            // if (resultado.data === "El usuario con ese e-mail ya existe en nuestra base de datos") {
-            //     alert(resultado.data)
-
-            // } else {
-            //     alert("Usuario registrado con Exito")
-            //     setTimeout(() => {
-            //         navigate("/login");
-            //     }, 500);
-            // }
 
         } catch (error) {
-            console.log(error);
+            if (error.response.data) {
+                alert("Email already exists")
+                console.log(error);
+            } else {
+                console.log(error);
+            }
         }
     }
 
@@ -94,7 +92,7 @@ const Register = (props) => {
                     .email('Email is invalid')
                     .required('Email is required'),
                 password: Yup.string()
-                    .min(4, 'Password must be at least 4 characters')
+                    .min(6, 'Password must be at least 6 characters')
                     .required('Password is required'),
                 confirmPassword: Yup.string()
                     .oneOf([Yup.ref('password'), null], 'Passwords must match')
@@ -133,7 +131,7 @@ const Register = (props) => {
                     <div className="designRegister">
                         <h1 className='h1Registro'>Register</h1>
                         <div className="formRegister">
-                            <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
+                            <Form style={{ minWidth: '25em' }} {...formItemLayout} onSubmit={handleSubmit} >
 
                                 <Form.Item required label="Name" hasFeedback validateStatus={errors.name && touched.name ? "error" : 'success'}>
                                     <Input
