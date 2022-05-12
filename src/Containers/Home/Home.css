@@ -1,0 +1,37 @@
+.designHome {
+
+    height: 85vh;
+    background-image: url('../../img/home3d.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 0%;
+}
+
+.cardHome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 5em;
+    padding-bottom: 1em;
+}
+
+.h1Home {
+    padding-top: 1em;
+    border-bottom: 1px solid grey;
+}
+
+.cardBody {
+    margin-top: 1em;
+    
+}
+
+.optionHome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spaceHomeAcces {
+    padding: 1em;
+}
