@@ -54,7 +54,7 @@ const Header = (props) => {
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{name}</a>
                         <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="#">Profile</a></li>
+                            <li><a className="dropdown-item" href="/profile">Profile</a></li>
                             <li><a className="dropdown-item" href="https://symulacfd.com/contacto/" target="blank">Contact</a></li>
                             <li><a className="dropdown-item" onClick={() => logOut()}>Log Out</a></li>
                         </ul>
