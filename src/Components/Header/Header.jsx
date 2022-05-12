@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
 import logo from '../../img/Symula_Logo.png';
+import { LOGOUT } from '../../Redux/types';
 
 import './Header.css'
 
@@ -23,6 +24,18 @@ const Header = (props) => {
     })
 
 
+    //FUNCION LOG OUT
+
+    const logOut = () => {
+        //Borrar de RDX las credenciales
+        props.dispatch({ type: LOGOUT });
+
+
+        setTimeout(() => {
+            navigate("/");
+        }, 500);
+    }
+
     return (
         <div className='designHeader'>
             <ul className="nav justify-content-center">
@@ -39,7 +52,7 @@ const Header = (props) => {
                     <ul className="dropdown-menu">
                         <li><a className="dropdown-item" href="#">Profile</a></li>
                         <li><a className="dropdown-item" href="#">Contact</a></li>
-                        <li><a className="dropdown-item" href="#">Log Out</a></li>
+                        <li><a className="dropdown-item" onClick={() => logOut()}>Log Out</a></li>
                     </ul>
                 </li>
                 <li className="nav-item">
