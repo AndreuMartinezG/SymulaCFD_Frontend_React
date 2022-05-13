@@ -1,0 +1,29 @@
+.designProfile {
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 85.2vh;
+    
+}
+
+
+.bodyProfile {
+    width: 90%;
+    height: 40em;
+    background-color: white;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2em;
+}
+
+.halfBodyProfileR {
+    width: 70%;
+    /* background-color: aqua; */
+    margin: 1em;
+}
+.halfBodyProfileL {
+    width: 30%;
+    margin: 1em 0 1em 1em;
+}

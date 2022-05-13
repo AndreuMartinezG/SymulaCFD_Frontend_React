@@ -15,7 +15,7 @@ const Header = (props) => {
     let isLogged = props.credentials?.token;
 
     useEffect(() => {
-        console.log(isLogged)
+       
 
     }, [])
 
