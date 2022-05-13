@@ -28,6 +28,10 @@ const Profile = (props) => {
         <div className='designProfile'>
             <HeaderProfile/>
             <h2>{userName.name} {userName.lastname}</h2>
+
+            <div className="bodyProfile">
+                
+            </div>
         </div>
     )
 }
