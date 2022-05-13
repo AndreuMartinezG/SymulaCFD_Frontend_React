@@ -9,7 +9,7 @@ import Home from './Containers/Home/Home';
 import Register from './Containers/Register/Register';
 import Login from './Containers/Login/Login';
 import Deskboard from './Containers/Deskboard/Deskboard';
-import Profile from './Containers/Profile/Profile';
+import Profile from './Containers/Profile/profile';
 
 function App() {
   return (

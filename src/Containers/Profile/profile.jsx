@@ -3,7 +3,7 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
 import {connect} from 'react-redux'
  
-import './Profile.css'
+import './profile.css'
  
 import HeaderProfile from '../../Components/HeaderProfile/HeaderProfile';
 
