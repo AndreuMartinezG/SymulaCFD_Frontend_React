@@ -1,0 +1,29 @@
+.headerProfile {
+    position: relative; 
+    height: 20em;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.headerProfileMainImg {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+}
+
+.headerProfileImg{
+    position: absolute;
+    bottom: -2em;
+}
+
+.headerProfileBodyImg {
+    object-fit: cover;
+    border: 4px solid white;
+    height: 7em;
+    width: 7em;
+    border-radius: 50%;
+    
+}
