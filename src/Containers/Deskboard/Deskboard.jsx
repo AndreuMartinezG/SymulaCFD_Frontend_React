@@ -37,6 +37,10 @@ const Deskboard = (props) => {
                 console.log(base64);
             }
         })
+
+        //get data from inputGroupSelect03
+        let select = document.getElementById('inputGroupSelect03');
+        console.log(select.value);
     }
 
     return (
@@ -55,6 +59,19 @@ const Deskboard = (props) => {
                         </div>
                         <div className="modal-body">
                             <input type="file" id="file" name="myImage" accept=".stl" onChange={(e) => convertBase64(e.target.files)} />
+                            <div className="input-group mb-3">
+                                <select className="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+                                    <option value="0">Category</option>
+                                    <option value="Aeroespacial">Aeroespacial</option>
+                                    <option value="Automoción">Automoción</option>
+                                    <option value="Validación">Validación</option>
+                                    <option value="Hobby">Hobby</option>
+                                    <option value="Profesional">Profesional</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                    <option value="Formación">Formación</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
