@@ -24,20 +24,16 @@ const Deskboard = (props) => {
     let geometry_name = '';
     let base64Result = '';
 
+
+    // ENVIO DE DATOS AL ENDPOINT DE CREAR PROYECTO
+
     const save = async () => {
         // Recoger datos y enviar al endpoint de crear proyecto
+        
         let userId = props.credentials.user.id;
-
-        //get input Title
         let title = document.getElementById('title').value;
-
-        //get input Description
         let description = document.getElementById('description').value;
-
-        //get input Category
         let category = document.getElementById('category').value;
-
-        //Get input scale
         let scale = document.getElementById('scale').value;
 
         let body = {
@@ -49,7 +45,6 @@ const Deskboard = (props) => {
             geometry_name: geometry_name,
         }
 
-        console.log(body);
         //header for token
         let token = props.credentials.token;
         let config = {
@@ -60,7 +55,8 @@ const Deskboard = (props) => {
 
         let resultado = await axios.post('http://localhost:8000/api/projects', body, config);
 
-        console.log(resultado)
+        let project_id = resultado.data.project.id;
+        console.log(project_id)
     }
 
     
@@ -81,7 +77,7 @@ const Deskboard = (props) => {
     }
 
     return (
-        <div className='designDeskboard'><h1>DESK BOARD</h1>
+        <div className='designDeskboard'><h2>DESK BOARD</h2>
 
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDatosProyecto">
                 New Project
@@ -127,7 +123,7 @@ const Deskboard = (props) => {
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button className="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+                            <button className="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Next</button>
                         </div>
                     </div>
                 </div>
@@ -160,12 +156,12 @@ const Deskboard = (props) => {
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-primary" onClick={() => save()}>Save changes</button>
+                            <button type="button" className="btn btn-primary" onClick={() => save()} data-bs-dismiss="modal" aria-label="Close">Save changes</button>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="modal-dialog modal-xl">...</div>
         </div>
     )
 }
