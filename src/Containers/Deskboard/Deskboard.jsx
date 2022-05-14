@@ -21,6 +21,9 @@ const Deskboard = (props) => {
         // }
     })
 
+    let geometry_name = '';
+    let base64Result = '';
+
     const save = async () => {
         // Recoger datos y enviar al endpoint de crear proyecto
         let userId = props.credentials.user.id;
@@ -38,11 +41,11 @@ const Deskboard = (props) => {
         let scale = document.getElementById('scale').value;
 
         let body = {
-            userId: userId,
+            user_id: userId,
             title: title,
             description: description,
             category: category,
-            scale: scale,
+            case: scale,
             geometry_name: geometry_name,
         }
 
@@ -55,13 +58,12 @@ const Deskboard = (props) => {
             }
         }
 
-        let resultado = axios.post('http://localhost:8000/api/projects', body, config);
+        let resultado = await axios.post('http://localhost:8000/api/projects', body, config);
 
         console.log(resultado)
     }
 
-    let geometry_name = '';
-    let base64Result = '';
+    
 
     // FUNCION PARA RECOGER LOS DATOS DEL MODAL
     const convertBase64 = (file) => {
@@ -73,12 +75,9 @@ const Deskboard = (props) => {
                 let arrayAux = [];
                 let base64 = reader.result;
                 arrayAux = base64.split(',');
-                let base64Result = arrayAux[1];
+                base64Result = arrayAux[1];
             }
         })
-
-
-
     }
 
     return (
