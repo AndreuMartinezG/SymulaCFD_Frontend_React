@@ -21,26 +21,43 @@ const Deskboard = (props) => {
         // }
     })
 
-    const save = () => {
-        //Recoger datos del formulario type file
-        let formData = new FormData();
-        formData.append('file', document.getElementById('file').files[0]);
-        console.log(formData);
+    const save = async() => {
+        //Recoger datos y enviar al endpoint
+        console.log(props)
     }
 
+
+
+    // FUNCION PARA RECOGER LOS DATOS DEL MODAL
     const convertBase64 = (file) => {
+        const fileName = file[0].name;
         Array.from(file).forEach(file => {
             let reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = function () {
+                let arrayAux = [];
                 let base64 = reader.result;
-                console.log(base64);
+                arrayAux=base64.split(',');
+                const base64Result = arrayAux[1];
             }
         })
 
-        //get data from inputGroupSelect03
-        let categorySelected = document.getElementById('category');
-        console.log(categorySelected.value);
+        //get input Title
+        const title = document.getElementById('title').value;
+        console.log(title, "Title");
+
+        //get input Description
+        const description = document.getElementById('description').value;
+        console.log(description, "Description");
+
+        //get input Category
+        const categorySelected = document.getElementById('category').value;
+        console.log(categorySelected, "Categoria");
+
+        //Get input scale
+        const scale = document.getElementById('scale').value;
+        console.log(scale, "Escala");
+
     }
 
     return (
@@ -51,9 +68,9 @@ const Deskboard = (props) => {
             </button>
 
             {/* MODAL DE DATOS DEL PROYECTO */}
-            
-            <div className="modal fade" id="modalDatosProyecto" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                <div className="modal-dialog modal-dialog-centered">
+
+            <div className="modal fade " id="modalDatosProyecto" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
+                <div className="modal-dialog modal-dialog-centered modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalToggleLabel">Project Data</h5>
@@ -64,13 +81,13 @@ const Deskboard = (props) => {
                             {/* TITULO */}
                             <label htmlFor="basic-input" className="form-label">Title</label>
                             <div className="input-group mb-3">
-                                <input type="text" className="form-control" aria-label="Title" aria-describedby="Title" />
+                                <input type="text" className="form-control" id='title' aria-label="Title" aria-describedby="Title" />
                             </div>
 
                             {/* DESCRIPCION */}
                             <label htmlFor="basic-input" className="form-label">Description</label>
-                            <div class="input-group">
-                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                            <div className="input-group">
+                                <textarea className="form-control" aria-label="With textarea" id='description'></textarea>
                             </div>
                             <br />
 
@@ -97,8 +114,8 @@ const Deskboard = (props) => {
             </div>
 
             {/* MODAL DE CARGA DE MODELO 3D Y CASE */}
-            <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-                <div className="modal-dialog modal-dialog-centered">
+            <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex="-1">
+                <div className="modal-dialog modal-dialog-centered modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalToggleLabel2">Load 3D model</h5>
@@ -128,11 +145,10 @@ const Deskboard = (props) => {
                     </div>
                 </div>
             </div>
-            <a className="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">New Proyect</a>
             <div className="modal-dialog modal-xl">...</div>
         </div>
     )
 }
 export default connect((state) => ({
-    //variables de rdx a crear
+    credentials: state.credentials,
 }))(Deskboard);
