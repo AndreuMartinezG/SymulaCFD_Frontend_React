@@ -149,6 +149,7 @@ const Deskboard = (props) => {
         </div>
     )
 }
+
 export default connect((state) => ({
     credentials: state.credentials,
 }))(Deskboard);
