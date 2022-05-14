@@ -27,10 +27,10 @@ const Header = (props) => {
 
     //FUNCION LOG OUT
 
-    const logOut = () => {
+    const logOut = async () => {
         //Borrar de RDX las credenciales
         props.dispatch({ type: LOGOUT });
-
+        await axios.post('http://localhost:8000/api/logout');
 
         setTimeout(() => {
             navigate("/");
