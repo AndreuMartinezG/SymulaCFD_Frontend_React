@@ -29,7 +29,7 @@ const Deskboard = (props) => {
 
     const save = async () => {
         // Recoger datos y enviar al endpoint de crear proyecto
-        
+
         let userId = props.credentials.user.id;
         let title = document.getElementById('title').value;
         let description = document.getElementById('description').value;
@@ -53,10 +53,25 @@ const Deskboard = (props) => {
             }
         }
 
+        //Enviar datos al endpoint
         let resultado = await axios.post('http://localhost:8000/api/projects', body, config);
 
         let project_id = resultado.data.project.id;
         console.log(project_id)
+
+        //Enviar datos al endpoint de crear geometria
+        let geometry = {
+            project_id: project_id,
+            user_id: userId,
+            stl: base64Result,
+            scale: scale,
+        }
+        console.log(geometry)
+
+        let resultado2 = await axios.post('https://69jkicnso8.execute-api.eu-west-3.amazonaws.com/dev', geometry, config);
+
+        console.log(resultado2)
+
     }
 
     
