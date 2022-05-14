@@ -12,6 +12,9 @@ const Deskboard = (props) => {
     useEffect(() => {
         //UseEffect equivalente a componentDidMount (montado)
 
+        //Llamada al endpoint para obtener los proyectos del usuario
+
+
     }, [])
 
     useEffect(() => {
@@ -19,6 +22,7 @@ const Deskboard = (props) => {
         // if (!props.credentials?.token) {
         //     navigate("/");
         // }
+        // getProjects();
     })
 
     let geometry_name = '';
@@ -26,7 +30,6 @@ const Deskboard = (props) => {
 
 
     // ENVIO DE DATOS AL ENDPOINT DE CREAR PROYECTO
-
     const save = async () => {
         // Recoger datos y enviar al endpoint de crear proyecto
 
@@ -36,20 +39,25 @@ const Deskboard = (props) => {
         let category = document.getElementById('category').value;
         let scale = document.getElementById('scale').value;
 
+        //get input file
+        let fileRaw = document.getElementById('file').files[0];
+
+        console.log(fileRaw.name);
+
         let body = {
             user_id: userId,
             title: title,
             description: description,
             category: category,
             case: scale,
-            geometry_name: geometry_name,
+            geometry_name: fileRaw.name,
         }
 
-        //header for token
+        //header para registrar nuevo proyecto
         let token = props.credentials.token;
         let config = {
             headers: {
-                'Authorization': `Bearer ${token}`   
+                'Authorization': `Bearer ${token}`
             }
         }
 
@@ -57,39 +65,91 @@ const Deskboard = (props) => {
         let resultado = await axios.post('http://localhost:8000/api/projects', body, config);
 
         let project_id = resultado.data.project.id;
-        console.log(project_id)
+
+
+        //Enviar datos al endpoint de stl
+        // let stl_body = {
+        //     fileStl: fileRaw,
+        // }
+
+        console.log(fileStl, "SOY FILE STL");
+
+        let config_stl = {
+            headers: {
+                "Content-Type": "application/sla",
+                "Accept": "application/json"
+            }
+        }
+        console.log(userId, "Soy el userId")
+        console.log(project_id, "Soy el project_id")
+        console.log(geometry_name, "Soy el geometry_name")
+
+        let stl_resultado = await axios.post(`https://17coe81mt4.execute-api.eu-west-3.amazonaws.com/v1/symula-test/${userId}-${project_id}-sim_body.stl`, fileRaw, config_stl );
+        
+        console.log(stl_resultado, "SOY RESULTADO DE STL");
+
+
 
         //Enviar datos al endpoint de crear geometria
-        let geometry = {
+        callEndpointGeometry(project_id, userId, scale);
+
+    }
+
+
+    const callEndpointGeometry = async (project_id, userId, scale) => {
+        let data = {
             project_id: project_id,
             user_id: userId,
-            stl: base64Result,
             scale: scale,
+            test: 'yes'
         }
-        console.log(geometry)
 
-        let resultado2 = await axios.post('https://69jkicnso8.execute-api.eu-west-3.amazonaws.com/dev', geometry, config);
+        console.log(data)
 
-        console.log(resultado2)
+        let resultado2 = await axios.post('https://69jkicnso8.execute-api.eu-west-3.amazonaws.com/dev', data);
 
+        console.log(resultado2, "resultado de geometria")   
     }
 
-    
+    let fileStl = '';
+
+
+    //FUNCION PARA OBTENER LOS PROYECTOS DEL USUARIO
+    const getProjects = async () => {
+        let userId = props.credentials.user.id;
+
+        //header for token
+        let token = props.credentials.token;
+        let config = {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+
+        let result = await axios.get(`http://localhost:8000/api/projects/user/${userId}`, config);
+
+        //Guardar los proyectos en una variable
+        let projects = result.data.projects;
+
+    }
 
     // FUNCION PARA RECOGER LOS DATOS DEL MODAL
-    const convertBase64 = (file) => {
-        geometry_name = file[0].name;
-        Array.from(file).forEach(file => {
-            let reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = function () {
-                let arrayAux = [];
-                let base64 = reader.result;
-                arrayAux = base64.split(',');
-                base64Result = arrayAux[1];
-            }
-        })
-    }
+    // const convertBase64 = (file) => {
+    //     console.log(file)
+    //     fileStl = file[0];
+    //     geometry_name = file[0].name;
+
+    //     // Array.from(file).forEach(file => {
+    //     //     let reader = new FileReader();
+    //     //     reader.readAsDataURL(file);
+    //     //     reader.onload = function () {
+    //     //         let arrayAux = [];
+    //     //         let base64 = reader.result;
+    //     //         arrayAux = base64.split(',');
+    //     //         base64Result = arrayAux[1];
+    //     //     }
+    //     // })
+    // }
 
     return (
         <div className='designDeskboard'><h2>DESK BOARD</h2>
@@ -167,7 +227,8 @@ const Deskboard = (props) => {
                             {/* CARGA DE MODELO 3D */}
                             <div className="mb-3">
                                 <label htmlFor="formFile" className="form-label">Select a file .stl</label>
-                                <input className="form-control" type="file" id="file" name="myImage" accept=".stl" onChange={(e) => convertBase64(e.target.files)} />
+                                <input className="form-control" type="file" id="file" name="myImage" accept=".stl"  />
+                                {/* onChange={(e) => convertBase64(e.target.files)} */}
                             </div>
                         </div>
                         <div className="modal-footer">
