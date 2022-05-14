@@ -46,58 +46,13 @@ const Deskboard = (props) => {
     return (
         <div className='designDeskboard'><h1>DESK BOARD</h1>
 
-            {/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
-            </button>
-
-            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">New Project</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-
-
-                            <div className="input-group mb-3">
-                                <input type="text" className="form-control" aria-label="Title" aria-describedby="Title" />
-                            </div>
-
-
-                            <label htmlFor="basic-input" className="form-label">Category</label>
-                            <div className="input-group mb-3">
-                                <select className="form-select" id="category" aria-label="Example select with button addon">
-                                    <option value="Aeroespacial">Aeroespacial</option>
-                                    <option value="Automoción">Automoción</option>
-                                    <option value="Validación">Validación</option>
-                                    <option value="Hobby">Hobby</option>
-                                    <option value="Profesional">Profesional</option>
-                                    <option value="Estudiante">Estudiante</option>
-                                    <option value="Formación">Formación</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="formFile" className="form-label">Select a file .stl</label>
-                                <input className="form-control" type="file" id="file" name="myImage" accept=".stl" onChange={(e) => convertBase64(e.target.files)} />
-                            </div>
-                        </div>
-                        *Each geometry to study will be considered as an independent project
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={() => save()}>Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
-            {/* Segundo modal */}
-
-            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDatosProyecto">
                 New Project
             </button>
-            <div className="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+
+            {/* MODAL DE DATOS DEL PROYECTO */}
+            
+            <div className="modal fade" id="modalDatosProyecto" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -118,10 +73,11 @@ const Deskboard = (props) => {
                                 <textarea class="form-control" aria-label="With textarea"></textarea>
                             </div>
                             <br />
+
                             {/* CATEGORIA */}
                             <label htmlFor="basic-input" className="form-label">Category</label>
                             <div className="input-group mb-3">
-                                <select className="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+                                <select className="form-select" id="category" aria-label="Example select with button addon">
                                     <option value="Aeroespacial">Aeroespacial</option>
                                     <option value="Automoción">Automoción</option>
                                     <option value="Validación">Validación</option>
@@ -139,6 +95,8 @@ const Deskboard = (props) => {
                     </div>
                 </div>
             </div>
+
+            {/* MODAL DE CARGA DE MODELO 3D Y CASE */}
             <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
@@ -147,13 +105,25 @@ const Deskboard = (props) => {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
+
+                            {/* Scale */}
+                            <label htmlFor="basic-input" className="form-label">Scale</label>
+                            <div className="input-group mb-3">
+                                <select className="form-select" id="scale" aria-label="Example select with button addon">
+                                    <option value="m">m</option>
+                                    <option value="mm">mm</option>
+
+                                </select>
+                            </div>
+
+                            {/* CARGA DE MODELO 3D */}
                             <div className="mb-3">
                                 <label htmlFor="formFile" className="form-label">Select a file .stl</label>
                                 <input className="form-control" type="file" id="file" name="myImage" accept=".stl" onChange={(e) => convertBase64(e.target.files)} />
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button className="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+                            <button type="button" className="btn btn-primary" onClick={() => save()}>Save changes</button>
                         </div>
                     </div>
                 </div>
