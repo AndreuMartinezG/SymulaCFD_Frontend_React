@@ -61,8 +61,6 @@ const Login = (props) => {
 
             let body = dataToSubmit
 
-            console.log(body)
-
             let resultado = await axios.post("http://127.0.0.1:8000/api/login", body);
 
             console.log(resultado)

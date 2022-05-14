@@ -21,42 +21,63 @@ const Deskboard = (props) => {
         // }
     })
 
-    const save = async() => {
-        //Recoger datos y enviar al endpoint
-        console.log(props)
+    const save = async () => {
+        // Recoger datos y enviar al endpoint de crear proyecto
+        let userId = props.credentials.user.id;
+
+        //get input Title
+        let title = document.getElementById('title').value;
+
+        //get input Description
+        let description = document.getElementById('description').value;
+
+        //get input Category
+        let category = document.getElementById('category').value;
+
+        //Get input scale
+        let scale = document.getElementById('scale').value;
+
+        let body = {
+            userId: userId,
+            title: title,
+            description: description,
+            category: category,
+            scale: scale,
+            geometry_name: geometry_name,
+        }
+
+        console.log(body);
+        //header for token
+        let token = props.credentials.token;
+        let config = {
+            headers: {
+                'Authorization': `Bearer ${token}`   
+            }
+        }
+
+        let resultado = axios.post('http://localhost:8000/api/projects', body, config);
+
+        console.log(resultado)
     }
 
-
+    let geometry_name = '';
+    let base64Result = '';
 
     // FUNCION PARA RECOGER LOS DATOS DEL MODAL
     const convertBase64 = (file) => {
-        const fileName = file[0].name;
+        geometry_name = file[0].name;
         Array.from(file).forEach(file => {
             let reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = function () {
                 let arrayAux = [];
                 let base64 = reader.result;
-                arrayAux=base64.split(',');
-                const base64Result = arrayAux[1];
+                arrayAux = base64.split(',');
+                let base64Result = arrayAux[1];
             }
         })
 
-        //get input Title
-        const title = document.getElementById('title').value;
-        console.log(title, "Title");
 
-        //get input Description
-        const description = document.getElementById('description').value;
-        console.log(description, "Description");
-
-        //get input Category
-        const categorySelected = document.getElementById('category').value;
-        console.log(categorySelected, "Categoria");
-
-        //Get input scale
-        const scale = document.getElementById('scale').value;
-        console.log(scale, "Escala");
 
     }
 
@@ -70,7 +91,7 @@ const Deskboard = (props) => {
             {/* MODAL DE DATOS DEL PROYECTO */}
 
             <div className="modal fade " id="modalDatosProyecto" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
-                <div className="modal-dialog modal-dialog-centered modal-lg">
+                <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalToggleLabel">Project Data</h5>
@@ -115,7 +136,7 @@ const Deskboard = (props) => {
 
             {/* MODAL DE CARGA DE MODELO 3D Y CASE */}
             <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex="-1">
-                <div className="modal-dialog modal-dialog-centered modal-lg">
+                <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalToggleLabel2">Load 3D model</h5>
