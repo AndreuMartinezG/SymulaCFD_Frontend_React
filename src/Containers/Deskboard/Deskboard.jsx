@@ -80,8 +80,8 @@ const Deskboard = (props) => {
         console.log(project_id, "Soy el project_id")
         console.log(geometry_name, "Soy el geometry_name")
 
-        let stl_resultado = await axios.post(`https://17coe81mt4.execute-api.eu-west-3.amazonaws.com/v1/symula-test/${userId}-${project_id}-sim_body.stl`, fileRaw, config_stl );
-        
+        let stl_resultado = await axios.post(`https://17coe81mt4.execute-api.eu-west-3.amazonaws.com/v1/symula-test/${userId}-${project_id}-sim_body.stl`, fileRaw, config_stl);
+
         console.log(stl_resultado, "SOY RESULTADO DE STL");
 
 
@@ -105,10 +105,10 @@ const Deskboard = (props) => {
 
         let resultado2 = await axios.post('https://69jkicnso8.execute-api.eu-west-3.amazonaws.com/dev', data);
 
-        console.log(resultado2.data, "resultado de geometria")   
+        console.log(resultado2.data, "resultado de geometria")
 
         let strUrls = resultado2.data;
-        
+
         let urls = strUrls.split(' ');
 
         console.log(urls, "urls")
@@ -142,6 +142,7 @@ const Deskboard = (props) => {
 
 
     //FUNCION PARA OBTENER LOS PROYECTOS DEL USUARIO
+    let projects = [];
     const getProjects = async () => {
         let userId = props.credentials.user.id;
 
@@ -156,98 +157,123 @@ const Deskboard = (props) => {
         let result = await axios.get(`http://localhost:8000/api/projects/user/${userId}`, config);
 
         //Guardar los proyectos en una variable
-        let projects = result.data.projects;
+        projects = result.data.projects;
 
         console.log(projects, "proyectos")
 
     }
 
     return (
-        <div className='designDeskboard'><h2>DESK BOARD</h2>
+        <div className='designDeskboard'>
+            <h2>DESK BOARD</h2>
 
-            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDatosProyecto">
-                New Project
-            </button>
+            {/* CONTAINER PARA EL MODAL */}
+            <div className='containerModal'>
+                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDatosProyecto">
+                    New Project
+                </button>
 
-            {/* MODAL DE DATOS DEL PROYECTO */}
+                {/* MODAL DE DATOS DEL PROYECTO */}
 
-            <div className="modal fade " id="modalDatosProyecto" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
-                <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalToggleLabel">Project Data</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div className="modal fade " id="modalDatosProyecto" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabIndex="-1">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalToggleLabel">Project Data</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+
+                                {/* TITULO */}
+                                <label htmlFor="basic-input" className="form-label">Title</label>
+                                <div className="input-group mb-3">
+                                    <input type="text" className="form-control" id='title' aria-label="Title" aria-describedby="Title" />
+                                </div>
+
+                                {/* DESCRIPCION */}
+                                <label htmlFor="basic-input" className="form-label">Description</label>
+                                <div className="input-group">
+                                    <textarea className="form-control" aria-label="With textarea" id='description'></textarea>
+                                </div>
+                                <br />
+
+                                {/* CATEGORIA */}
+                                <label htmlFor="basic-input" className="form-label">Category</label>
+                                <div className="input-group mb-3">
+                                    <select className="form-select" id="category" aria-label="Example select with button addon">
+                                        <option value="Aeroespacial">Aeroespacial</option>
+                                        <option value="Automoción">Automoción</option>
+                                        <option value="Validación">Validación</option>
+                                        <option value="Hobby">Hobby</option>
+                                        <option value="Profesional">Profesional</option>
+                                        <option value="Estudiante">Estudiante</option>
+                                        <option value="Formación">Formación</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button className="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Next</button>
+                            </div>
                         </div>
-                        <div className="modal-body">
+                    </div>
+                </div>
 
-                            {/* TITULO */}
-                            <label htmlFor="basic-input" className="form-label">Title</label>
-                            <div className="input-group mb-3">
-                                <input type="text" className="form-control" id='title' aria-label="Title" aria-describedby="Title" />
+                {/* MODAL DE CARGA DE MODELO 3D Y CASE */}
+                <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex="-1">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalToggleLabel2">Load 3D model</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                            <div className="modal-body">
 
-                            {/* DESCRIPCION */}
-                            <label htmlFor="basic-input" className="form-label">Description</label>
-                            <div className="input-group">
-                                <textarea className="form-control" aria-label="With textarea" id='description'></textarea>
-                            </div>
-                            <br />
+                                {/* Scale */}
+                                <label htmlFor="basic-input" className="form-label">Scale</label>
+                                <div className="input-group mb-3">
+                                    <select className="form-select" id="scale" aria-label="Example select with button addon">
+                                        <option value="m">m</option>
+                                        <option value="mm">mm</option>
 
-                            {/* CATEGORIA */}
-                            <label htmlFor="basic-input" className="form-label">Category</label>
-                            <div className="input-group mb-3">
-                                <select className="form-select" id="category" aria-label="Example select with button addon">
-                                    <option value="Aeroespacial">Aeroespacial</option>
-                                    <option value="Automoción">Automoción</option>
-                                    <option value="Validación">Validación</option>
-                                    <option value="Hobby">Hobby</option>
-                                    <option value="Profesional">Profesional</option>
-                                    <option value="Estudiante">Estudiante</option>
-                                    <option value="Formación">Formación</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
+                                    </select>
+                                </div>
+
+                                {/* CARGA DE MODELO 3D */}
+                                <div className="mb-3">
+                                    <label htmlFor="formFile" className="form-label">Select a file .stl</label>
+                                    <input className="form-control" type="file" id="file" name="myImage" accept=".stl" />
+                                    {/* onChange={(e) => convertBase64(e.target.files)} */}
+                                </div>
                             </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button className="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Next</button>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-primary" onClick={() => save()} data-bs-dismiss="modal" aria-label="Close">Save changes</button>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* MODAL DE CARGA DE MODELO 3D Y CASE */}
-            <div className="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabIndex="-1">
-                <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalToggleLabel2">Load 3D model</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
+            {/* CONTAINER PARA LOS PROYECTOS */}
+            <div className='containerProjects'>
 
-                            {/* Scale */}
-                            <label htmlFor="basic-input" className="form-label">Scale</label>
-                            <div className="input-group mb-3">
-                                <select className="form-select" id="scale" aria-label="Example select with button addon">
-                                    <option value="m">m</option>
-                                    <option value="mm">mm</option>
 
-                                </select>
+                
+                    {/* PROYECTOS */}
+                    {projects.map((project, index) => (
+                        <div className='project' key={index}>
+                            <div className='project-title'>
+                                <h3>{project.title}</h3>
                             </div>
-
-                            {/* CARGA DE MODELO 3D */}
-                            <div className="mb-3">
-                                <label htmlFor="formFile" className="form-label">Select a file .stl</label>
-                                <input className="form-control" type="file" id="file" name="myImage" accept=".stl"  />
-                                {/* onChange={(e) => convertBase64(e.target.files)} */}
+                            <div className='project-description'>
+                                <p>{project.description}</p>
                             </div>
                         </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-primary" onClick={() => save()} data-bs-dismiss="modal" aria-label="Close">Save changes</button>
 
-                        </div>
-                    </div>
-                </div>
+
+                    ))}
+                
             </div>
         </div>
     )

@@ -2,3 +2,11 @@
     height: 85.2vh;
     background-color: antiquewhite;
 }
+
+.containerProjects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
