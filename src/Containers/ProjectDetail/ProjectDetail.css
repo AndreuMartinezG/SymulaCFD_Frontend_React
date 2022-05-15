@@ -1,0 +1,23 @@
+.designProjectDetail {
+    height: 85.2vh;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iframe3D{
+    width: 50%;
+    height: 60%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+}
+
+.datosProject{
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
+}
