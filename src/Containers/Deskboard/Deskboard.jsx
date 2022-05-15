@@ -23,7 +23,7 @@ const Deskboard = (props) => {
         //     navigate("/");
         // }
         // getProjects();
-        
+
     })
 
     let geometry_name = '';
@@ -62,16 +62,13 @@ const Deskboard = (props) => {
             }
         }
 
-        //Enviar datos al endpoint
+        //Enviar datos al endpoint de guardar proyecto
         let resultado = await axios.post('http://localhost:8000/api/projects', body, config);
 
         let project_id = resultado.data.project.id;
 
 
         //Enviar datos al endpoint de stl
-        // let stl_body = {
-        //     fileStl: fileRaw,
-        // }
 
         console.log(fileStl, "SOY FILE STL");
 
@@ -97,6 +94,7 @@ const Deskboard = (props) => {
     }
 
 
+    // Funcion ENVIO DE DATOS AL ENDPOINT DE CREAR GEOMETRIA
     const callEndpointGeometry = async (project_id, userId, scale) => {
         let data = {
             project_id: project_id,
@@ -109,7 +107,7 @@ const Deskboard = (props) => {
 
         let resultado2 = await axios.post('https://69jkicnso8.execute-api.eu-west-3.amazonaws.com/dev', data);
 
-        console.log(resultado2, "resultado de geometria")   
+        console.log(resultado2.data, "resultado de geometria")   
     }
 
     let fileStl = '';
