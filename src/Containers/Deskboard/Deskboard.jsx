@@ -283,7 +283,7 @@ const Deskboard = (props) => {
                     {
                         projectsLoad.map((project, index) =>
                             <div className="col" key={index}>
-                                <div className="card" onClick={()=> selectProject(project)}>
+                                <div className="card card2" onClick={()=> selectProject(project)}>
                                     <a href={`/projectdetail/${project.id}`}>
                                     <img src={tunerViento} className="card-img-top" alt="..." />
                                     <div className="card-body">
