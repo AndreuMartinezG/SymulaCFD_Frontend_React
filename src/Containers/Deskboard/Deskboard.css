@@ -2,3 +2,21 @@
     height: 85.2vh;
     background-color: antiquewhite;
 }
+
+@media screen and (max-width: 768px) {
+    .designDeskboard {
+        height: auto;
+    }  
+}
+
+.containerProjects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin: 2em;
+}
+
+.card {
+    cursor: pointer;
+}
