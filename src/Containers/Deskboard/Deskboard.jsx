@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { PROJECT_DETAIL } from '../../Redux/types'
 import tunerViento from '../../img/Portada_Tunel_Viento.jpg';
 import './Deskboard.css'
 
@@ -174,7 +175,11 @@ const Deskboard = (props) => {
     }
 
 
+    //FUNCION PARA GUARDAR EN REDUX EL PROYECTO SELECCIONADO
+    const selectProject = (project) => {
+        props.dispatch({ type: PROJECT_DETAIL, payload: project})
 
+    }
 
 
     return (
@@ -278,12 +283,14 @@ const Deskboard = (props) => {
                     {
                         projectsLoad.map((project, index) =>
                             <div className="col" key={index}>
-                                <div className="card">
+                                <div className="card" onClick={()=> selectProject(project)}>
+                                    <a href={`/projectdetail/${project.id}`}>
                                     <img src={tunerViento} className="card-img-top" alt="..." />
                                     <div className="card-body">
                                         <h5 className="card-title">{project.title}</h5>
                                         <p className="card-text">{project.description}</p>
                                     </div>
+                                    </a>
                                 </div>
                             </div>
                         )
