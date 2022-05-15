@@ -41,7 +41,7 @@ const ProjectDetail = (props) => {
                             <p className="card-text"><b> Name: </b> {projectSelected.geometry_name}</p>
                             <p className="card-text"><b>Category: </b>{projectSelected.category}</p>
                             <br />
-                            <a href="#" className="btn btn-primary">Go somewhere</a>
+                            <a href={`/simulationdetail/${projectSelected.id}`}className="btn btn-primary">Finish Simulation</a>
                         </div>
                     </div>
                 </div>
