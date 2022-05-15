@@ -9,11 +9,16 @@ const Deskboard = (props) => {
 
     let navigate = useNavigate();
 
+    //HOOKS
+    const [projectsLoad, setProjectsLoad] = useState([]);
+    const [projectsUpdate, setProjectsUpdate] = useState();
+
+
     useEffect(() => {
         //UseEffect equivalente a componentDidMount (montado)
 
         //Llamada al endpoint para obtener los proyectos del usuario
-
+        getProjects();
 
     }, [])
 
@@ -22,12 +27,15 @@ const Deskboard = (props) => {
         // if (!props.credentials?.token) {
         //     navigate("/");
         // }
-        getProjects();
-
     })
 
+    useEffect(() => {
+        //UseEffect equivalente a componentDidUpdate (actualizado)
+        console.log("He entrado en useEffect de Projects Load")
+        getProjects();
+    }, [projectsLoad])
+
     let geometry_name = '';
-    let base64Result = '';
 
 
     // ENVIO DE DATOS AL ENDPOINT DE CREAR PROYECTO
@@ -138,11 +146,13 @@ const Deskboard = (props) => {
         let resultado = await axios.put(`http://localhost:8000/api/projects/${id}/route_3D`, body, config);
 
         console.log(resultado, "resultado de update")
+
+        window.location.reload();
     }
 
 
     //FUNCION PARA OBTENER LOS PROYECTOS DEL USUARIO
-    let projects = [];
+
     const getProjects = async () => {
         let userId = props.credentials.user.id;
 
@@ -155,13 +165,19 @@ const Deskboard = (props) => {
         }
 
         let result = await axios.get(`http://localhost:8000/api/projects/user/${userId}`, config);
-
+        console.log(result.data.projects, "resultado de getProjects")
         //Guardar los proyectos en una variable
-        projects = result.data.projects;
 
-        console.log(projects, "proyectos")
+        setTimeout(() => {
+            setProjectsLoad(result.data.projects);
+            console.log(projectsLoad, "projectsLoad")
+        }, 1000);
 
     }
+
+
+
+
 
     return (
         <div className='designDeskboard'>
@@ -243,7 +259,6 @@ const Deskboard = (props) => {
                                 <div className="mb-3">
                                     <label htmlFor="formFile" className="form-label">Select a file .stl</label>
                                     <input className="form-control" type="file" id="file" name="myImage" accept=".stl" />
-                                    {/* onChange={(e) => convertBase64(e.target.files)} */}
                                 </div>
                             </div>
                             <div className="modal-footer">
@@ -259,21 +274,23 @@ const Deskboard = (props) => {
             <div className='containerProjects'>
 
 
-                
-                    {/* PROYECTOS */}
-                    {projects.map((project, index) => (
-                        <div className='project' key={index}>
-                            <div className='project-title'>
-                                <h3>{project.title}</h3>
-                            </div>
-                            <div className='project-description'>
-                                <p>{project.description}</p>
-                            </div>
-                        </div>
 
-
-                    ))}
-                
+                {/* PROYECTOS */}
+                <div className="row row-cols-1 row-cols-md-5 g-4">
+                    {
+                        projectsLoad.map((project, index) =>
+                            <div className="col" key={index}>
+                                <div className="card">
+                                    <img src="..." className="card-img-top" alt="..." />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{project.title}</h5>
+                                        <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }
+                </div>
             </div>
         </div>
     )
