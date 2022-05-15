@@ -11,6 +11,7 @@ import Login from './Containers/Login/Login';
 import Deskboard from './Containers/Deskboard/Deskboard';
 import Profile from './Containers/Profile/profile';
 import ProjectDetail from './Containers/ProjectDetail/ProjectDetail';
+import SimulationDetail from './Containers/SimulationDetail/SimulationDetail';
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
           <Route path={'/profile'} element={<Profile />} />
           <Route path={'/login'} element={<Login />} />
           <Route path={'/projectdetail/:project_id'} element={<ProjectDetail />} />
+          <Route path={'/simulationdetail/:project_id'} element={<SimulationDetail />} />
+
 
         </Routes>
 
