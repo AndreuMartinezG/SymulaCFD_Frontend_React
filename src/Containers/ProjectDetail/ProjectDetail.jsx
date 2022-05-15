@@ -26,7 +26,7 @@ const ProjectDetail = (props) => {
                 <iframe src={urlDefault} width="100%" height="100%"></iframe>
             </div>
             <div className="datosProject">
-                sdf
+                sdfdsf
             </div>
         </div>
     )
