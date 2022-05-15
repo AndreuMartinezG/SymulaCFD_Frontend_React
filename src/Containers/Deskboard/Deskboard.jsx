@@ -70,8 +70,6 @@ const Deskboard = (props) => {
 
         //Enviar datos al endpoint de stl
 
-        console.log(fileStl, "SOY FILE STL");
-
         let config_stl = {
             headers: {
                 "Content-Type": "application/sla",
@@ -108,9 +106,39 @@ const Deskboard = (props) => {
         let resultado2 = await axios.post('https://69jkicnso8.execute-api.eu-west-3.amazonaws.com/dev', data);
 
         console.log(resultado2.data, "resultado de geometria")   
+
+        let strUrls = resultado2.data;
+        
+        let urls = strUrls.split(' ');
+
+        console.log(urls, "urls")
+
+
+        //Funcion para actualizar los campos de URL del proyecto
+        updateProject(project_id, urls);
     }
 
-    let fileStl = '';
+
+    // Funcion PARA ACTUALIZAR LOS CAMPOS DE URL DEL PROYECTO
+    const updateProject = async (project_id, urls) => {
+
+        let id = project_id;
+
+        let body = {
+            index_Route_3D: urls[0],
+            default_Route_3D: urls[1],
+        }
+
+        let config = {
+            headers: {
+                'Authorization': `Bearer ${props.credentials.token}`
+            }
+        }
+
+        let resultado = await axios.put(`http://localhost:8000/api/projects/${id}/route_3D`, body, config);
+
+        console.log(resultado, "resultado de update")
+    }
 
 
     //FUNCION PARA OBTENER LOS PROYECTOS DEL USUARIO
@@ -131,24 +159,6 @@ const Deskboard = (props) => {
         let projects = result.data.projects;
 
     }
-
-    // FUNCION PARA RECOGER LOS DATOS DEL MODAL
-    // const convertBase64 = (file) => {
-    //     console.log(file)
-    //     fileStl = file[0];
-    //     geometry_name = file[0].name;
-
-    //     // Array.from(file).forEach(file => {
-    //     //     let reader = new FileReader();
-    //     //     reader.readAsDataURL(file);
-    //     //     reader.onload = function () {
-    //     //         let arrayAux = [];
-    //     //         let base64 = reader.result;
-    //     //         arrayAux = base64.split(',');
-    //     //         base64Result = arrayAux[1];
-    //     //     }
-    //     // })
-    // }
 
     return (
         <div className='designDeskboard'><h2>DESK BOARD</h2>
