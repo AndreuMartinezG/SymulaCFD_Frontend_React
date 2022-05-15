@@ -1,10 +1,10 @@
 .designHome {
 
     height: 85.2vh;
-    background-image: url('../../img/home3d.jpg');
-    background-size: cover;
+    background-image: url('../../img/PortadaCoche.jpg');
+    background-size: inherit;
     background-repeat: no-repeat;
-    background-position: 50% 0%;
+    background-position: 50% 50%;
 }
 
 .cardHome {
