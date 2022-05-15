@@ -11,17 +11,20 @@ const SimulationDetail = (props) => {
  
     useEffect(()=>{
     //UseEffect equivalente a componentDidMount (montado)
- 
+        console.log(props.search, 'props')
     },[])
  
     useEffect(()=>{
     //UseEffect equivalente a componentDidUpdate (actualizado)
  
     },)
- 
+    const urlIndex = props.search.index_Route_3D;
  
     return (
-        <div className='designSimulationDetail'></div>
+        <div className='designSimulationDetail'>
+            <div className="pasarelaPago"></div>
+            <iframe className="pintar3DIndex" src={urlIndex}></iframe>
+        </div>
     )
 }
 export default connect((state) => ({ 
