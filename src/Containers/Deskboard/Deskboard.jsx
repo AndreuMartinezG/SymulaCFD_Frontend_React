@@ -22,7 +22,7 @@ const Deskboard = (props) => {
         // if (!props.credentials?.token) {
         //     navigate("/");
         // }
-        // getProjects();
+        getProjects();
 
     })
 
@@ -157,6 +157,8 @@ const Deskboard = (props) => {
 
         //Guardar los proyectos en una variable
         let projects = result.data.projects;
+
+        console.log(projects, "proyectos")
 
     }
 
