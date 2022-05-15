@@ -70,7 +70,7 @@ const Deskboard = (props) => {
         }
 
         //Enviar datos al endpoint de guardar proyecto
-        let resultado = await axios.post('http://localhost:8000/api/projects', body, config);
+        let resultado = await axios.post('https://symula-cfd-backend.herokuapp.com/api/projects', body, config);
 
         let project_id = resultado.data.project.id;
 
@@ -142,7 +142,7 @@ const Deskboard = (props) => {
             }
         }
 
-        let resultado = await axios.put(`http://localhost:8000/api/projects/${id}/route_3D`, body, config);
+        let resultado = await axios.put(`https://symula-cfd-backend.herokuapp.com/api/projects/${id}/route_3D`, body, config);
 
         console.log(resultado, "resultado de update")
 
@@ -163,7 +163,7 @@ const Deskboard = (props) => {
             }
         }
 
-        let result = await axios.get(`http://localhost:8000/api/projects/user/${userId}`, config);
+        let result = await axios.get(`https://symula-cfd-backend.herokuapp.com/api/projects/user/${userId}`, config);
         console.log(result.data.projects, "resultado de getProjects")
         //Guardar los proyectos en una variable
 

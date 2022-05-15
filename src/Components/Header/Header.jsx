@@ -30,7 +30,7 @@ const Header = (props) => {
     const logOut = async () => {
         //Borrar de RDX las credenciales
         props.dispatch({ type: LOGOUT });
-        await axios.post('http://localhost:8000/api/logout');
+        await axios.post('https://symula-cfd-backend.herokuapp.com/api/logout');
 
         setTimeout(() => {
             navigate("/");

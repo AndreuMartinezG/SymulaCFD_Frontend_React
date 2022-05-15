@@ -50,7 +50,7 @@ const Register = (props) => {
 
         try {
 
-            await axios.post("http://127.0.0.1:8000/api/register", body);
+            await axios.post("https://symula-cfd-backend.herokuapp.com/api/register", body);
 
             alert("Usuario registrado con Exito")
             setTimeout(() => {
