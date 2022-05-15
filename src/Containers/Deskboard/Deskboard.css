@@ -3,8 +3,20 @@
     background-color: antiquewhite;
 }
 
+@media screen and (max-width: 768px) {
+    .designDeskboard {
+        height: auto;
+    }  
+}
+
 .containerProjects {
-    height: 40rem;
-    width: 100%;
-    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin: 2em;
+}
+
+.card {
+    cursor: pointer;
 }

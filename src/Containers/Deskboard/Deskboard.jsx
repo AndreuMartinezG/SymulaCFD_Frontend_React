@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import { connect } from 'react-redux'
-
+import tunerViento from '../../img/Portada_Tunel_Viento.jpg';
 import './Deskboard.css'
 
 const Deskboard = (props) => {
@@ -11,7 +11,6 @@ const Deskboard = (props) => {
 
     //HOOKS
     const [projectsLoad, setProjectsLoad] = useState([]);
-    const [projectsUpdate, setProjectsUpdate] = useState();
 
 
     useEffect(() => {
@@ -32,7 +31,6 @@ const Deskboard = (props) => {
     useEffect(() => {
         //UseEffect equivalente a componentDidUpdate (actualizado)
         console.log("He entrado en useEffect de Projects Load")
-        getProjects();
     }, [projectsLoad])
 
     let geometry_name = '';
@@ -281,10 +279,10 @@ const Deskboard = (props) => {
                         projectsLoad.map((project, index) =>
                             <div className="col" key={index}>
                                 <div className="card">
-                                    <img src="..." className="card-img-top" alt="..." />
+                                    <img src={tunerViento} className="card-img-top" alt="..." />
                                     <div className="card-body">
                                         <h5 className="card-title">{project.title}</h5>
-                                        <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p className="card-text">{project.description}</p>
                                     </div>
                                 </div>
                             </div>
