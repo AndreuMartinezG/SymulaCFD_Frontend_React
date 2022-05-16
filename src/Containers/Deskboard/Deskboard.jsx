@@ -24,9 +24,9 @@ const Deskboard = (props) => {
 
     useEffect(() => {
         //UseEffect equivalente a componentDidUpdate (actualizado)
-        // if (!props.credentials?.token) {
-        //     navigate("/");
-        // }
+        if (!props.credentials?.token) {
+            navigate("/");
+        }
     })
 
     useEffect(() => {

@@ -16,6 +16,9 @@ const SimulationDetail = (props) => {
 
     useEffect(() => {
         //UseEffect equivalente a componentDidUpdate (actualizado)
+        if (!props.credentials?.token) {
+            navigate("/");
+        }
 
     })
     const urlIndex = props.search.index_Route_3D;

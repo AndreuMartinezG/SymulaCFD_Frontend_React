@@ -16,6 +16,9 @@ const ProjectDetail = (props) => {
 
     useEffect(() => {
         //UseEffect equivalente a componentDidUpdate (actualizado)
+        if (!props.credentials?.token) {
+            navigate("/");
+        }
     })
 
     const projectSelected = props.search;

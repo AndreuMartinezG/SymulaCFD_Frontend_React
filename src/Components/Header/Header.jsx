@@ -15,7 +15,7 @@ const Header = (props) => {
     let isLogged = props.credentials?.token;
 
     useEffect(() => {
-       
+
 
     }, [])
 
@@ -30,8 +30,16 @@ const Header = (props) => {
     const logOut = async () => {
         //Borrar de RDX las credenciales
         props.dispatch({ type: LOGOUT });
-        await axios.post('https://symula-cfd-backend.herokuapp.com/api/logout');
 
+        try {
+
+            await axios.post('https://symula-cfd-backend.herokuapp.com/api/logout');
+
+
+        }
+        catch (error) {
+            console.log(error);
+        }
         setTimeout(() => {
             navigate("/");
         }, 500);
