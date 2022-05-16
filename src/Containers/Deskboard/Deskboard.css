@@ -1,9 +1,21 @@
 .designDeskboard {
     height: 85.2vh;
-    background-color: antiquewhite;
 }
 
+.containerModal {
+    margin-top: 2em;
+    
+}
 
+.titleDeskBoard {
+    padding-top: 3em;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5em;
+}
 
 .containerProjects {
     display: flex;
@@ -11,6 +23,7 @@
     align-items: center;
     height: auto;
     margin: 2em;
+    
 }
 
 .card2 {
@@ -19,6 +32,6 @@
 
 @media screen and (max-width: 768px) {
     .designDeskboard {
-        height: auto;
+        height: 100vh;
     }  
 }

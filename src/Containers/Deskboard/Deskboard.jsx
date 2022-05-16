@@ -209,7 +209,7 @@ const Deskboard = (props) => {
 
     return (
         <div className='designDeskboard'>
-            <h2>DESK BOARD</h2>
+            <h2 className='titleDeskBoard'>DESK BOARD</h2>
 
             {/* CONTAINER PARA EL MODAL */}
             <div className='containerModal'>
