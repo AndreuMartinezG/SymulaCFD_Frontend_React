@@ -3,9 +3,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-
+.containerProjectDetail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50em;
+}
 
 .pintar3D{
     width:100%;
@@ -28,7 +35,7 @@
     height: 60%;
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-
+    margin-right: 1em;
     display: flex;
     flex-direction: ComponentName;
     justify-content: center;
@@ -36,7 +43,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .designProjectDetail {
+    .containerProjectDetail {
         flex-direction: column;
         width: 100vw;
     }
