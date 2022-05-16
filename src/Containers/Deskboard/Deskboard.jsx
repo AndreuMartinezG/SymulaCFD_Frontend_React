@@ -40,144 +40,169 @@ const Deskboard = (props) => {
     // ENVIO DE DATOS AL ENDPOINT DE CREAR PROYECTO
     const save = async () => {
         // Recoger datos y enviar al endpoint de crear proyecto
+        try {
 
-        let userId = props.credentials.user.id;
-        let title = document.getElementById('title').value;
-        let description = document.getElementById('description').value;
-        let category = document.getElementById('category').value;
-        let scale = document.getElementById('scale').value;
+            let userId = props.credentials.user.id;
+            let title = document.getElementById('title').value;
+            let description = document.getElementById('description').value;
+            let category = document.getElementById('category').value;
+            let scale = document.getElementById('scale').value;
 
-        //get input file
-        let fileRaw = document.getElementById('file').files[0];
+            //get input file
+            let fileRaw = document.getElementById('file').files[0];
 
-        console.log(fileRaw.name);
+            console.log(fileRaw.name);
 
-        let body = {
-            user_id: userId,
-            title: title,
-            description: description,
-            category: category,
-            case: scale,
-            geometry_name: fileRaw.name,
-        }
-
-        //header para registrar nuevo proyecto
-        let token = props.credentials.token;
-        let config = {
-            headers: {
-                'Authorization': `Bearer ${token}`
+            let body = {
+                user_id: userId,
+                title: title,
+                description: description,
+                category: category,
+                case: scale,
+                geometry_name: fileRaw.name,
             }
-        }
 
-        //Enviar datos al endpoint de guardar proyecto
-        let resultado = await axios.post('https://symula-cfd-backend.herokuapp.com/api/projects', body, config);
-
-        let project_id = resultado.data.project.id;
-
-
-        //Enviar datos al endpoint de stl
-
-        let config_stl = {
-            headers: {
-                "Content-Type": "application/sla",
-                "Accept": "application/json"
+            //header para registrar nuevo proyecto
+            let token = props.credentials.token;
+            let config = {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
             }
+
+            //Enviar datos al endpoint de guardar proyecto
+            let resultado = await axios.post('https://symula-cfd-backend.herokuapp.com/api/projects', body, config);
+
+            let project_id = resultado.data.project.id;
+
+
+            //Enviar datos al endpoint de stl
+
+            let config_stl = {
+                headers: {
+                    "Content-Type": "application/sla",
+                    "Accept": "application/json"
+                }
+            }
+            console.log(userId, "Soy el userId")
+            console.log(project_id, "Soy el project_id")
+            console.log(geometry_name, "Soy el geometry_name")
+
+            let stl_resultado = await axios.post(`https://17coe81mt4.execute-api.eu-west-3.amazonaws.com/v1/symula-test/${userId}-${project_id}-sim_body.stl`, fileRaw, config_stl);
+
+            console.log(stl_resultado, "SOY RESULTADO DE STL");
+
+
+
+            //Enviar datos al endpoint de crear geometria
+            callEndpointGeometry(project_id, userId, scale);
+        } catch (error) {
+            console.log(error);
         }
-        console.log(userId, "Soy el userId")
-        console.log(project_id, "Soy el project_id")
-        console.log(geometry_name, "Soy el geometry_name")
-
-        let stl_resultado = await axios.post(`https://17coe81mt4.execute-api.eu-west-3.amazonaws.com/v1/symula-test/${userId}-${project_id}-sim_body.stl`, fileRaw, config_stl);
-
-        console.log(stl_resultado, "SOY RESULTADO DE STL");
-
-
-
-        //Enviar datos al endpoint de crear geometria
-        callEndpointGeometry(project_id, userId, scale);
 
     }
 
 
     // Funcion ENVIO DE DATOS AL ENDPOINT DE CREAR GEOMETRIA
     const callEndpointGeometry = async (project_id, userId, scale) => {
-        let data = {
-            project_id: project_id,
-            user_id: userId,
-            scale: scale,
-            test: 'yes'
+
+        try {
+
+            let data = {
+                project_id: project_id,
+                user_id: userId,
+                scale: scale,
+                test: 'yes'
+            }
+
+            console.log(data)
+
+            let resultado2 = await axios.post('https://69jkicnso8.execute-api.eu-west-3.amazonaws.com/dev', data);
+
+            console.log(resultado2.data, "resultado de geometria")
+
+            let strUrls = resultado2.data;
+
+            let urls = strUrls.split(' ');
+
+            console.log(urls, "urls")
+
+
+            //Funcion para actualizar los campos de URL del proyecto
+            updateProject(project_id, urls);
+
+        } catch (error) {
+            console.log(error);
         }
-
-        console.log(data)
-
-        let resultado2 = await axios.post('https://69jkicnso8.execute-api.eu-west-3.amazonaws.com/dev', data);
-
-        console.log(resultado2.data, "resultado de geometria")
-
-        let strUrls = resultado2.data;
-
-        let urls = strUrls.split(' ');
-
-        console.log(urls, "urls")
-
-
-        //Funcion para actualizar los campos de URL del proyecto
-        updateProject(project_id, urls);
     }
-
 
     // Funcion PARA ACTUALIZAR LOS CAMPOS DE URL DEL PROYECTO
     const updateProject = async (project_id, urls) => {
 
-        let id = project_id;
+        try {
+            let id = project_id;
 
-        let body = {
-            index_Route_3D: urls[0],
-            default_Route_3D: urls[1],
-        }
-
-        let config = {
-            headers: {
-                'Authorization': `Bearer ${props.credentials.token}`
+            let body = {
+                index_Route_3D: urls[0],
+                default_Route_3D: urls[1],
             }
+
+            let config = {
+                headers: {
+                    'Authorization': `Bearer ${props.credentials.token}`
+                }
+            }
+
+            let resultado = await axios.put(`https://symula-cfd-backend.herokuapp.com/api/projects/${id}/route_3D`, body, config);
+
+            console.log(resultado, "resultado de update")
+
+            window.location.reload();
+
+        } catch (error) {
+
+            console.log(error);
+
         }
-
-        let resultado = await axios.put(`https://symula-cfd-backend.herokuapp.com/api/projects/${id}/route_3D`, body, config);
-
-        console.log(resultado, "resultado de update")
-
-        window.location.reload();
     }
 
 
     //FUNCION PARA OBTENER LOS PROYECTOS DEL USUARIO
 
     const getProjects = async () => {
-        let userId = props.credentials.user.id;
 
-        //header for token
-        let token = props.credentials.token;
-        let config = {
-            headers: {
-                'Authorization': `Bearer ${token}`
+        try {
+
+
+            let userId = props.credentials.user.id;
+
+            //header for token
+            let token = props.credentials.token;
+            let config = {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
             }
+
+            let result = await axios.get(`https://symula-cfd-backend.herokuapp.com/api/projects/user/${userId}`, config);
+            console.log(result.data.projects, "resultado de getProjects")
+            //Guardar los proyectos en una variable
+
+            setTimeout(() => {
+                setProjectsLoad(result.data.projects);
+                console.log(projectsLoad, "projectsLoad")
+            }, 1000);
+
+        } catch (error) {
+            console.log(error);
         }
-
-        let result = await axios.get(`https://symula-cfd-backend.herokuapp.com/api/projects/user/${userId}`, config);
-        console.log(result.data.projects, "resultado de getProjects")
-        //Guardar los proyectos en una variable
-
-        setTimeout(() => {
-            setProjectsLoad(result.data.projects);
-            console.log(projectsLoad, "projectsLoad")
-        }, 1000);
 
     }
 
 
     //FUNCION PARA GUARDAR EN REDUX EL PROYECTO SELECCIONADO
     const selectProject = (project) => {
-        props.dispatch({ type: PROJECT_DETAIL, payload: project})
+        props.dispatch({ type: PROJECT_DETAIL, payload: project })
 
     }
 
@@ -283,13 +308,13 @@ const Deskboard = (props) => {
                     {
                         projectsLoad.map((project, index) =>
                             <div className="col" key={index}>
-                                <div className="card card2" onClick={()=> selectProject(project)}>
+                                <div className="card card2" onClick={() => selectProject(project)}>
                                     <a href={`/projectdetail/${project.id}`}>
-                                    <img src={tunerViento} className="card-img-top" alt="..." />
-                                    <div className="card-body">
-                                        <h5 className="card-title">{project.title}</h5>
-                                        <p className="card-text">{project.description}</p>
-                                    </div>
+                                        <img src={tunerViento} className="card-img-top" alt="..." />
+                                        <div className="card-body">
+                                            <h5 className="card-title">{project.title}</h5>
+                                            <p className="card-text">{project.description}</p>
+                                        </div>
                                     </a>
                                 </div>
                             </div>

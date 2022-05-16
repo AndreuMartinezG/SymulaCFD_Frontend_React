@@ -3,11 +3,7 @@
     background-color: antiquewhite;
 }
 
-@media screen and (max-width: 768px) {
-    .designDeskboard {
-        height: auto;
-    }  
-}
+
 
 .containerProjects {
     display: flex;
@@ -19,4 +15,10 @@
 
 .card2 {
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .designDeskboard {
+        height: auto;
+    }  
 }
