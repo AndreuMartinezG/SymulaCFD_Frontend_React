@@ -30,7 +30,8 @@ const Profile = (props) => {
             <h2>{userName.name} {userName.lastname}</h2>
 
             <div className="bodyProfile">
-                
+                <div className="userInfo">USER INFO</div>
+                <div className="userChangeInfo">Change Info</div>
             </div>
         </div>
     )

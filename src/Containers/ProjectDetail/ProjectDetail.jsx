@@ -51,7 +51,7 @@ const ProjectDetail = (props) => {
 
     return (
         <div className='designProjectDetail'>
-            <h2>Project Detail</h2>
+            <h2 className='titleProjectDetail'>Project Detail</h2>
             <div className="containerProjectDetail">
                 <div className="iframe3D">
                     <iframe className="pintar3D" src={urlDefault}></iframe>
