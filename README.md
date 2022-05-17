@@ -64,46 +64,46 @@ La vista Home es la pagina de inicio de la aplicación y la primera que se muest
 Te redirige a la vista de Login o al registro si no estas registrado.
 
 
-![Home](/symula_cfd/src/img/Home.png)
+![Home](src/img/Home.png)
 
 
 ## Login 
 En la vista de Login podemos loguearnos  poniendo los campos email y contraseña para poder disfrutar de todas las funcionalidades de la aplicación.
 
-![Login](/symula_cfd/src/img/Login.png)
+![Login](src/img/Login.png)
 
 ## Register
 En la vista de Register se solicitan una serie de datos personales mediante un formulario para poder acceder a la aplicación. 
 
-![Register](/symula_cfd/src/img/Register.png)
+![Register](src/img/Register.png)
 
 ## Deskboard
 La vista de Deskboard es la pagina principal de la aplicacion, en la que podras crear nuevos proyectos (VER COMO USAR IMPORTANTE) y ver los proyectos que has creado.
 
-![Deskboard](/symula_cfd/src/img/Deskboard.png)
+![Deskboard](src/img/Deskboard.png)
 
 ## ProjectDetail
 En la vista de ProjectDetail se puede ver el detalle de un proyecto, en el cual podremos ver el modelo 3D, los datos del proyecto y la simulación que se esta realizando.
 
-![ProjectDetail](/symula_cfd/src/img/ProjectDetail.png)
+![ProjectDetail](src/img/ProjectDetail.png)
 
 ## SimulationDetail
 En la vista de SimulationDetail se puede ver el detalle de una simulación, con la cual se puede interactuar y introducir algunos parametro para la simulación.
 
 Ademas de los botones para acudir a la pasarela de pago para finalizar la simulación.
 
-![SimulationDetail](/symula_cfd/src/img/Simulation.png)
+![SimulationDetail](src/img/Simulation.png)
 
 ## Pasarela de Pago
 En la vista de Pasarela de Pago se puede realizar el pago de la simulación, en la cual se puede introducir el numero de tarjeta, el codigo de seguridad y la fecha de expiración (TEST MODE).
 
-![PasarelaPago](/symula_cfd/src/img/Pasarela.png)
+![PasarelaPago](src/img/Pasarela.png)
 
 ## Profile 
 En esta vista se muestra el perfil del usuario logueado.
 Además de mostrar los datos del usuario, tienes la opción de modificar el perfil.
 
-![Profile](/symula_cfd/src/img/Profile.png)
+![Profile](src/img/Profile.png)
 
 
 ## 3. Herramientas Utilizadas.
