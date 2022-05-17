@@ -1,12 +1,19 @@
 .designDeskboard {
     height: 85.2vh;
-    background-color: antiquewhite;
 }
 
-@media screen and (max-width: 768px) {
-    .designDeskboard {
-        height: auto;
-    }  
+.containerModal {
+    margin-top: 2em;
+    
+}
+
+.titleDeskBoard {
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5em;
 }
 
 .containerProjects {
@@ -15,8 +22,15 @@
     align-items: center;
     height: auto;
     margin: 2em;
+    
 }
 
 .card2 {
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .designDeskboard {
+        height: 100vh;
+    }  
 }

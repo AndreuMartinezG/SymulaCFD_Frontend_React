@@ -18,12 +18,71 @@
     margin-bottom: 2em;
 }
 
-.halfBodyProfileR {
-    width: 70%;
-    /* background-color: aqua; */
+.userInfo {
+    width: 50%;
     margin: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.halfBodyProfileL {
-    width: 30%;
+
+.cardUserInfo{
+    padding-top: 1em;
+    width: 50%;
+    height: 80%;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+.userChangeInfo {
+    width: 50%;
     margin: 1em 0 1em 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.cardUserChangeInfo{
+    padding: 1em;
+    width: 80%;
+    height: 90%;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+@media screen and (max-width: 768px) {
+    .designProfile {
+        height: 100vh;
+    }
+    .bodyProfile {
+        flex-direction: column;
+        height: auto;
+    }
+    .userInfo {
+        padding-right: 2em;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .cardUserInfo {
+        width: 90%;
+        height: 100%;
+    }
+    .userChangeInfo {
+        padding-right: 2em;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .cardUserChangeInfo {
+        width: 90%;
+        height: 100%;
+    }
+}
+    
