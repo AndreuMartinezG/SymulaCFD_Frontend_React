@@ -11,7 +11,7 @@ const ProjectDetail = (props) => {
 
     useEffect(() => {
         //UseEffect equivalente a componentDidMount (montado)
-        console.log(props, 'props')
+        
     }, [])
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const ProjectDetail = (props) => {
                 }
             }
 
-            console.log(projectSelected.id)
+            
             await axios.delete(`https://symula-cfd-backend.herokuapp.com/api/projects/${projectSelected.id}`, config);
             alert("Proyecto Eliminado con Exito")
             navigate("/deskboard");

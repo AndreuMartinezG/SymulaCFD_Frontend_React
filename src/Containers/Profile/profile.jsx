@@ -46,7 +46,7 @@ const Profile = (props) => {
                 }
             }
             let res = await axios.get('https://symula-cfd-backend.herokuapp.com/api/me', config);
-            console.log(res.data)
+            
             setTimeout(() => {
                 setUser(res.data);
             }, 2000);
@@ -63,7 +63,7 @@ const Profile = (props) => {
                     let lastname = document.getElementById('changeLastname').value;
                     let email = document.getElementById('changeEmail').value;
 
-                    console.log(name, lastname, email)
+                    
 
                     try {
 

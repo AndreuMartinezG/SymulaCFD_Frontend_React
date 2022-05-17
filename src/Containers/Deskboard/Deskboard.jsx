@@ -31,7 +31,6 @@ const Deskboard = (props) => {
 
     useEffect(() => {
         //UseEffect equivalente a componentDidUpdate (actualizado)
-        console.log("He entrado en useEffect de Projects Load")
     }, [projectsLoad])
 
     let geometry_name = '';
@@ -51,7 +50,7 @@ const Deskboard = (props) => {
             //get input file
             let fileRaw = document.getElementById('file').files[0];
 
-            console.log(fileRaw.name);
+            
 
             let body = {
                 user_id: userId,
@@ -84,9 +83,7 @@ const Deskboard = (props) => {
                     "Accept": "application/json"
                 }
             }
-            console.log(userId, "Soy el userId")
-            console.log(project_id, "Soy el project_id")
-            console.log(geometry_name, "Soy el geometry_name")
+            
 
             let stl_resultado = await axios.post(`https://17coe81mt4.execute-api.eu-west-3.amazonaws.com/v1/symula-test/${userId}-${project_id}-sim_body.stl`, fileRaw, config_stl);
 

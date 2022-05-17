@@ -11,7 +11,7 @@ const SimulationDetail = (props) => {
 
     useEffect(() => {
         //UseEffect equivalente a componentDidMount (montado)
-        console.log(props.search, 'props')
+        
     }, [])
 
     useEffect(() => {
