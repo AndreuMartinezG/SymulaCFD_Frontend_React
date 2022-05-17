@@ -92,12 +92,12 @@ En la vista de SimulationDetail se puede ver el detalle de una simulación, con 
 
 Ademas de los botones para acudir a la pasarela de pago para finalizar la simulación.
 
-![SimulationDetail](src/img/Simulation.png)
+![SimulationDetail](src/img/simulation.png)
 
 ## Pasarela de Pago
 En la vista de Pasarela de Pago se puede realizar el pago de la simulación, en la cual se puede introducir el numero de tarjeta, el codigo de seguridad y la fecha de expiración (TEST MODE).
 
-![PasarelaPago](src/img/Pasarela.png)
+![PasarelaPago](src/img/pasarela.png)
 
 ## Profile 
 En esta vista se muestra el perfil del usuario logueado.
