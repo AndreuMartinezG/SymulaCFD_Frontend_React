@@ -1,70 +1,119 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Symula CDF - Frontend
 
-## Available Scripts
+![image](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![image](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
+![image](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![image](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
-In the project directory, you can run:
 
-### `npm start`
+Acceso a la web: [https://symula-cfd-backend.herokuapp.com](https://symula-cfd-backend.herokuapp.com)<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 0. Indice:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+  [1. Introduccion:](#1-introducción)<br>
+  [2. Como Usar:](#3-descripción-del-proyecto)<br>
+  [3. Herramientas Utilizadas:](#5herramientas-utilizadas)<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 1. Introducción.
 
-### `npm run build`
+- El proyecto se basa en la creación de una app para una Startup que realiza simulaciones de CFD 
+(Dinámica de Fluidos Computacional) por medio de un software propio, en el cual quiere ampliar su 
+modelo de negocio proporcionando a empresas la posibilidad de contratar un servicio de simulación 
+online, en el cual se les permitiría a los clientes subir sus modelos 3D, ajustar parámetros específicos 
+y lanzar la simulación a los servidores de la Startup en cuestión.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- BackEnd and BBDD Deployed on [HEROKU](https://symula-cfd-backend.herokuapp.com)<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- FrontEnd Deployed on [AWS](https://symula-cfd-backend.herokuapp.com)<br>
+  
+## 2. Como Usar.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+  
+- IMPORATANTE: Para poder realizar la demo del proyecto, tienes que descargar el modelo 3D (.stl) de este enlace:
+https://drive.google.com/file/d/1HbDoXr6VxpvJ0inknzWrMBDwBsXi31OH/view?usp=sharing
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- IMPORTANTE: A La hora de crear un proyecto se te solicitará en un punto que introduzcas la escala del modelo 3D que tendras que indicar que la unidad de medidas son METROS = (m), ya que es la medida especifica para este modelo 3D que te he propocionado. Ademas de cargar el mismo modelo 3D que hemos descargado.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Para usar el proyecto, se debe de registrar en la web, y luego se debe de iniciar sesión.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- En la pasarela de pago se pueden añadir datos ficticios para simular una compra, pero no se puede realizar la compra.
+  
+  Nº de tarjeta: 4242 4242 4242 4242<br>
+  Los demás datos son ficticios a elección del usuario.<br>
+  La fecha de expiracion tiene que ser superior a la fecha actual.<br>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+La aplicación consta distintas vistas:
 
-## Learn More
+ - Home
+ - Login 
+ - Register
+ - Profile
+ - Deskboard
+ - ProjectDetail
+ - SimulationDetail
+ - Pasarela de Pago
+ 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Home
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+La vista Home es la pagina de inicio de la aplicación y la primera que se muestra al usuario.
 
-### Code Splitting
+Te redirige a la vista de Login o al registro si no estas registrado.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+![Home](/symula_cfd/src/img/Home.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Login 
+En la vista de Login podemos loguearnos  poniendo los campos email y contraseña para poder disfrutar de todas las funcionalidades de la aplicación.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![Login](/symula_cfd/src/img/Login.png)
 
-### Advanced Configuration
+## Register
+En la vista de Register se solicitan una serie de datos personales mediante un formulario para poder acceder a la aplicación. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![Register](/symula_cfd/src/img/Register.png)
 
-### Deployment
+## Deskboard
+La vista de Deskboard es la pagina principal de la aplicacion, en la que podras crear nuevos proyectos (VER COMO USAR IMPORTANTE) y ver los proyectos que has creado.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Deskboard](/symula_cfd/src/img/Deskboard.png)
 
-### `npm run build` fails to minify
+## ProjectDetail
+En la vista de ProjectDetail se puede ver el detalle de un proyecto, en el cual podremos ver el modelo 3D, los datos del proyecto y la simulación que se esta realizando.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![ProjectDetail](/symula_cfd/src/img/ProjectDetail.png)
+
+## SimulationDetail
+En la vista de SimulationDetail se puede ver el detalle de una simulación, con la cual se puede interactuar y introducir algunos parametro para la simulación.
+
+Ademas de los botones para acudir a la pasarela de pago para finalizar la simulación.
+
+![SimulationDetail](/symula_cfd/src/img/Simulation.png)
+
+## Pasarela de Pago
+En la vista de Pasarela de Pago se puede realizar el pago de la simulación, en la cual se puede introducir el numero de tarjeta, el codigo de seguridad y la fecha de expiración (TEST MODE).
+
+![PasarelaPago](/symula_cfd/src/img/Pasarela.png)
+
+## Profile 
+En esta vista se muestra el perfil del usuario logueado.
+Además de mostrar los datos del usuario, tienes la opción de modificar el perfil.
+
+![Profile](/symula_cfd/src/img/Profile.png)
+
+
+## 3. Herramientas Utilizadas.
+
+- MySQL Workbench - (BBDD)
+- Visual Studio Code - (DEV)
+- Postman - (DEBUG)
+- AWS - (DEPLOY)
+
+<br>
+
+
+[Subir](#top)
